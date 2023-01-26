@@ -1,4 +1,4 @@
-# vue-p2
+# Mi primer proyecto de Vue + TypeScript
 
 ## Project setup
 ```
