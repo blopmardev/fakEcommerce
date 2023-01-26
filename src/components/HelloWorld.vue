@@ -1,12 +1,12 @@
 <template>
-  <div class="hello">
-    <h1>{{ msg }}</h1>
+  <main class="hello">
+    <h2>{{ msg }}</h2>
+    <h3> {{ title }}</h3>
+    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ab asperiores facilis laboriosam exercitationem, totam fuga recusandae nostrum est quidem voluptates fugiat quia tenetur distinctio obcaecati explicabo cum possimus consectetur hic. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ab asperiores facilis laboriosam exercitationem, totam fuga recusandae nostrum est quidem voluptates fugiat quia tenetur distinctio obcaecati explicabo cum possimus consectetur hic. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ab asperiores facilis laboriosam exercitationem, totam fuga recusandae nostrum est quidem voluptates fugiat quia tenetur distinctio obcaecati explicabo cum possimus consectetur hic.</p>
     <p>
-      For a guide and recipes on how to configure / customize this project,<br>
-      check out the
-      <a href="https://cli.vuejs.org" target="_blank" rel="noopener">vue-cli documentation</a>.
+      Para personalizar y configurar este proyecto, revisa la <a href="https://cli.vuejs.org" target="_blank" rel="noopener">documentación de vue-cli</a>.
     </p>
-    <h3>Installed CLI Plugins</h3>
+    <h3>Plugins de CLI Instalados en este proyecto</h3>
     <ul>
       <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-babel" target="_blank" rel="noopener">babel</a></li>
       <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-router" target="_blank" rel="noopener">router</a></li>
@@ -14,7 +14,7 @@
       <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-eslint" target="_blank" rel="noopener">eslint</a></li>
       <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-typescript" target="_blank" rel="noopener">typescript</a></li>
     </ul>
-    <h3>Essential Links</h3>
+    <h3>Enlaces de referencia</h3>
     <ul>
       <li><a href="https://vuejs.org" target="_blank" rel="noopener">Core Docs</a></li>
       <li><a href="https://forum.vuejs.org" target="_blank" rel="noopener">Forum</a></li>
@@ -22,7 +22,7 @@
       <li><a href="https://twitter.com/vuejs" target="_blank" rel="noopener">Twitter</a></li>
       <li><a href="https://news.vuejs.org" target="_blank" rel="noopener">News</a></li>
     </ul>
-    <h3>Ecosystem</h3>
+    <h4>Ecosistema</h4>
     <ul>
       <li><a href="https://router.vuejs.org" target="_blank" rel="noopener">vue-router</a></li>
       <li><a href="https://vuex.vuejs.org" target="_blank" rel="noopener">vuex</a></li>
@@ -30,7 +30,7 @@
       <li><a href="https://vue-loader.vuejs.org" target="_blank" rel="noopener">vue-loader</a></li>
       <li><a href="https://github.com/vuejs/awesome-vue" target="_blank" rel="noopener">awesome-vue</a></li>
     </ul>
-  </div>
+  </main>
 </template>
 
 <script lang="ts">
@@ -40,13 +40,17 @@ export default defineComponent({
   name: 'HelloWorld',
   props: {
     msg: String,
+    title: String
   },
 });
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h3 {
+p {
+  margin: 20px 0 0;
+}
+h2, h3 {
   margin: 40px 0 0;
 }
 ul {
@@ -59,5 +63,13 @@ li {
 }
 a {
   color: #42b983;
+}
+p {
+  font-size: 1rem;
+}
+
+main{
+  width: 90%;
+  margin: 0 auto;
 }
 </style>

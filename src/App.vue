@@ -1,30 +1,52 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
-  <router-view/>
+  <NavBar title="Vue App" :links="[
+    { label: 'Google', url: 'http://www.google.es' },
+    { label: 'Vue', url: 'http://www.vuejs.org' },
+  ]" />
+  <CustomButton>
+  </CustomButton>
+  <router-view />
 </template>
 
+<script lang="ts">
+import { defineComponent, onBeforeMount, onMounted } from 'vue';
+import NavBar from "./components/NavBar.vue";
+import CustomButton from "./components/CustomButton.vue";
+export default defineComponent({
+  name: 'AppComponent',
+  components: {
+    NavBar,
+    CustomButton
+  },
+  setup() {
+    console.log("Creamos en el setup");
+
+    onBeforeMount(()=>{
+      console.log("onBeforeMount: antes de montar el componente")
+    })
+
+    onMounted(()=> {
+      console.log("onMounted: componente ya montado");
+    })
+  }
+})
+</script>
+
 <style>
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: rgb(231, 229, 229);
+}
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-}
-
-nav {
-  padding: 30px;
-}
-
-nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-nav a.router-link-exact-active {
-  color: #42b983;
 }
 </style>
