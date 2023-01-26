@@ -17,6 +17,24 @@
     </template>
     <template v-slot:footer>
     <h4>Footer</h4>
+    <router-link :to="{name: 'product', params: {id: '1Ab3c4d'}}">Detalles</router-link>
+    </template>
+  </CustomCard>
+  <CustomCard>
+    <template v-slot:header>
+      <h3>Card Header</h3>
+    </template>
+    <template v-slot:picture>
+      <img src="../assets/logo.png" alt="Logo de Vue" title="Logo de Vue" class="img">
+    </template>
+    <template v-slot:body>
+      <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+        Sed, dolorum explicabo tempore neque quia, omnis ipsum iste dolores, deserunt numquam et rem beatae.
+        Excepturi, deserunt nam sunt accusantium expedita exercitationem.</p>
+    </template>
+    <template v-slot:footer>
+    <h4>Footer</h4>
+    <router-link :to="{name: 'product', params: {id: '2Ab5c4d'}}">Detalles</router-link>
     </template>
   </CustomCard>
 </template>
