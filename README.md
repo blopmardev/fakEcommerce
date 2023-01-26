@@ -1,5 +1,7 @@
 # Mi primer proyecto de Vue + TypeScript
 
+[Captura de pantalla de la sección Productos](/assets/vue-app-screenshot.png)
+
 ## Project setup
 ```
 npm install
