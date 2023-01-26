@@ -3,20 +3,26 @@
     { label: 'Google', url: 'http://www.google.es' },
     { label: 'Vue', url: 'http://www.vuejs.org' },
   ]" />
+  {{ today }}
   <CustomButton>
   </CustomButton>
   <router-view />
 </template>
 
 <script lang="ts">
-import { defineComponent, onBeforeMount, onMounted } from 'vue';
+import { defineComponent,
+  onBeforeMount,
+  onMounted,
+  onUnmounted,
+  onUpdated } from 'vue';
 import NavBar from "./components/NavBar.vue";
 import CustomButton from "./components/CustomButton.vue";
 export default defineComponent({
   name: 'AppComponent',
   components: {
     NavBar,
-    CustomButton
+    CustomButton,
+
   },
   setup() {
     console.log("Creamos en el setup");
@@ -25,9 +31,27 @@ export default defineComponent({
       console.log("onBeforeMount: antes de montar el componente")
     })
 
+    const today = new Date().toDateString()
+
     onMounted(()=> {
       console.log("onMounted: componente ya montado");
+      console.log(today)
     })
+
+    
+
+    onUpdated(()=> {
+      console.log("onUpdated: componente actualizado");
+    })
+
+
+    onUnmounted(()=> {
+      console.log("onUnmounted: componente desmontado");
+    })
+
+    return {
+      today
+    }
   }
 })
 </script>

@@ -7,9 +7,9 @@
       <h1>{{ title }}</h1>
     </div>
     <div>
-      <router-link to="/" title="Home">Home</router-link> |
-      <router-link to="/productos" title="Productos">Productos</router-link> |
-      <router-link to="/contacto" title="Contacto">Contacto</router-link>
+      <router-link :to="{name: 'home'}" title="Home">Home</router-link> |
+      <router-link :to="{name: 'products'}" title="Productos">Productos</router-link> |
+      <router-link :to="{name: 'contact'}" title="Contacto">Contacto</router-link>
     </div>
   </nav>
   <nav class="links" v-if="links">
