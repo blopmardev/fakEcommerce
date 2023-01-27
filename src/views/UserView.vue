@@ -9,6 +9,7 @@
 
 <script lang="ts">
 import { defineComponent} from 'vue';
+import fakeShopApi from '../api/fakeShopApi';
 export default defineComponent({
   name: 'UserComponent',
   components: {
@@ -25,7 +26,9 @@ export default defineComponent({
   setup(){
 
     const rol ="Admin"
-
+    fakeShopApi.get('/products').then((res) => {
+      console.log(res);
+    })
     return {
       rol
     }
