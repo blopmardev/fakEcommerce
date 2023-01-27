@@ -1,5 +1,6 @@
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
+import haveRoleGuard from './role-guard';
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -32,6 +33,7 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/usuario/:id',
     name: 'user',
+    beforeEnter: [haveRoleGuard],
     component: () => import(/* webpackChunkName: "product" */'../views/UserView.vue'),
     props: (route) => {
       const id = Number(route.params.id);
