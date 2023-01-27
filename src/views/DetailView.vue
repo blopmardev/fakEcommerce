@@ -7,8 +7,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from 'vue';
-import { useRoute } from 'vue-router';
+import { defineComponent} from 'vue';
 import CustomCard from '../components/CustomCard.vue';
 export default defineComponent({
   name: 'DetailComponent',
@@ -16,10 +15,16 @@ export default defineComponent({
     CustomCard
   },
 
+  props: {
+    id: {
+      type: Number,
+      requeried: true,
+    }
+  },
+
   setup(){
-    const route = useRoute();
-    const id = ref<string>(route.params.id as string);
-    return {id}
+
+    return {}
   }
 })
 </script>

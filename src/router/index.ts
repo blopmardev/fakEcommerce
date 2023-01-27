@@ -23,13 +23,18 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/productos/producto/:id',
     name: 'product',
-    component: () => import(/* webpackChunkName: "product" */'../views/DetailView.vue')
-  }
-]
+    component: () => import(/* webpackChunkName: "product" */'../views/DetailView.vue'),
+    props: (route) => {
+      const id = Number(route.params.id)
+ 
+      return isNaN(id) ? { id: null } : {id};
+    },
+  },
+];
 
 const router = createRouter({
   history: createWebHashHistory(),
-  routes
-})
+  routes,
+});
 
-export default router
+export default router;
