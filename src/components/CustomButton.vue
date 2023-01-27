@@ -1,6 +1,6 @@
 <template>
     <button @click="$emit('clicked')">
-        Soy un botón
+        <slot name="text">Soy un botón</slot>
     </button>
 </template>
 

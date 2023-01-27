@@ -12,7 +12,7 @@
     </template>
     <template v-slot:body>
       <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>
-      <router-link :to="{ name: 'product', params: { id: 1 } }">Detalles del producto</router-link>
+      <router-link :to="{ name: 'product', params: { id: 603 } }">Detalles del producto</router-link>
     </template>
     <template v-slot:footer>
       <h4>Footer</h4>
@@ -27,7 +27,7 @@
     </template>
     <template v-slot:body>
       <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>
-      <router-link :to="{ name: 'product', params: { id: 2 } }">Detalles</router-link>
+      <router-link :to="{ name: 'product', params: { id: 602 } }">Detalles del producto</router-link>
     </template>
     <template v-slot:footer>
       <h4>Footer</h4>

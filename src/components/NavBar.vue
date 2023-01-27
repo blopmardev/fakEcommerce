@@ -11,6 +11,7 @@
       <router-link :to="{name: 'products'}" title="Productos">Productos</router-link> |
       <router-link :to="{name: 'contact'}" title="Contacto">Contacto</router-link>
     </div>
+    {{ greeting }}
   </nav>
   <nav class="links" v-if="links">
     <a v-for="link in links"
@@ -18,13 +19,17 @@
     :href="link.url"
     :title="link.label"
     target="_blank">{{ link.label }}</a>
+  <CustomButton @click="changeGreeting">
+    <template v-slot:text> x Cerrar sesión</template>
+  </CustomButton>
   </nav>
 </template>
 <script lang="ts">
-import { defineComponent, PropType } from 'vue';
+import { defineComponent, PropType, ref } from 'vue';
 import { Link } from '@/interfaces/link';
 import { Btn } from '@/interfaces/btn';
-
+import { useStore } from 'vuex'
+import CustomButton from '../components/CustomButton.vue';
 
 export default defineComponent({
   name: 'NavBar',
@@ -51,6 +56,23 @@ export default defineComponent({
         ]
       }
     }
+  },
+  components: {
+    CustomButton,
+
+  },
+  setup(){
+    const store = useStore()
+    store.state
+    const greeting = ref<string>(store.state.greeting)
+
+    return {
+      store,
+      greeting,
+      changeGreeting: () => {
+        store.commit('changeGreeting')
+      }
+    };
   },
 });
 </script>
