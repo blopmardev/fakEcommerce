@@ -17,7 +17,7 @@
     </template>
     <template v-slot:footer>
     <h4>Footer</h4>
-    <router-link :to="{name: 'product', params: {id: 987654}}">Detalles</router-link>
+    <router-link :to="{name: 'product', params: {id: 1}}">Detalles</router-link>
     </template>
   </CustomCard>
   <CustomCard>
@@ -34,7 +34,7 @@
     </template>
     <template v-slot:footer>
     <h4>Footer</h4>
-    <router-link :to="{name: 'product', params: {id: 123456}}">Detalles</router-link>
+    <router-link :to="{name: 'product', params: {id: 2}}">Detalles</router-link>
     </template>
   </CustomCard>
 </template>

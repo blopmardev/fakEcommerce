@@ -1,15 +1,20 @@
 <template>
-    <article>
-        <h1>Perfil de usuario:</h1>
-        <h3>Id de Usuario: {{ id }}</h3>
-        <h3>Rol de Usuario: {{ rol }}</h3>
-        <h3>UserRol: {{ userRole }}</h3>
-    </article>
+  <article>
+    <h1>Perfil de usuario</h1>
+    <section>
+      <h3>Id de Usuario: {{ id }}</h3>
+      <h3>Nombre de usuario: {{ user?.name }}</h3>
+      <h3>Rol de usuario: {{ user?.role }}</h3>
+    </section>
+  </article>
 </template>
 
 <script lang="ts">
-import { defineComponent} from 'vue';
+import { defineComponent, ref } from 'vue';
+import { AxiosResponse } from 'axios';
 import fakeShopApi from '../api/fakeShopApi';
+import { User } from '../models/user';
+
 export default defineComponent({
   name: 'UserComponent',
   components: {
@@ -20,18 +25,38 @@ export default defineComponent({
       type: Number,
       required: true,
     },
-    userRole: String,
+    userRole: String
   },
 
-  setup(){
+  setup(props) {
+    let user = ref<User>();
 
-    const rol ="Admin"
-    fakeShopApi.get('/products').then((res) => {
-      console.log(res);
-    })
+    fakeShopApi.get<unknown, AxiosResponse<User>>(`/users/${props.id}`)
+      .then((res) => {
+        user.value = res.data;
+        console.log(res.data)
+        console.log(user.value.name)
+        console.log(user.value.id)
+
+      })
     return {
-      rol
+      user
     }
   }
 })
 </script>
+
+<style scoped>
+section {
+  width: 50%;
+  height: auto;
+  margin: 0 auto;
+  background-color: coral;
+  min-height: 100px;
+  text-align: left;
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+  padding: 2rem;
+}
+</style>
