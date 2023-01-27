@@ -11,13 +11,11 @@
       <img src="../assets/logo.png" alt="Logo de Vue" title="Logo de Vue" class="img">
     </template>
     <template v-slot:body>
-      <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-        Sed, dolorum explicabo tempore neque quia, omnis ipsum iste dolores, deserunt numquam et rem beatae.
-        Excepturi, deserunt nam sunt accusantium expedita exercitationem.</p>
+      <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>
+      <router-link :to="{ name: 'product', params: { id: 1 } }">Detalles del producto</router-link>
     </template>
     <template v-slot:footer>
-    <h4>Footer</h4>
-    <router-link :to="{name: 'product', params: {id: 1}}">Detalles</router-link>
+      <h4>Footer</h4>
     </template>
   </CustomCard>
   <CustomCard>
@@ -28,13 +26,11 @@
       <img src="../assets/logo.png" alt="Logo de Vue" title="Logo de Vue" class="img">
     </template>
     <template v-slot:body>
-      <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-        Sed, dolorum explicabo tempore neque quia, omnis ipsum iste dolores, deserunt numquam et rem beatae.
-        Excepturi, deserunt nam sunt accusantium expedita exercitationem.</p>
+      <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>
+      <router-link :to="{ name: 'product', params: { id: 2 } }">Detalles</router-link>
     </template>
     <template v-slot:footer>
-    <h4>Footer</h4>
-    <router-link :to="{name: 'product', params: {id: 2}}">Detalles</router-link>
+      <h4>Footer</h4>
     </template>
   </CustomCard>
 </template>
@@ -52,20 +48,19 @@ export default defineComponent({
 
 
 <style scoped>
-
-.products{
+.products {
   margin: 0 auto;
   width: 90%;
   margin-top: 1rem;
   padding: 1rem;
 }
+
 .img {
-    width: 50%;
-    max-width: 200px;
+  width: 50%;
+  max-width: 200px;
 }
 
 h1 {
   color: #539678;
 }
-
 </style>
