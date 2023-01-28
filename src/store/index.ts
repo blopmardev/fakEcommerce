@@ -8,14 +8,17 @@ export default createStore({
       email: "micorreo@dominio.es",
       name: "Marcos",
     },
-    greeting: "🟢Hola, estás online"
+    greeting: "🟢Hola, estás online",
   },
   getters: {
+    hello(state){
+      return state.greeting;
+    }
   },
   mutations: {
-    changeGreeting(state){
-      state.greeting = " 🔴Sesión Cerrada"
-    }
+    changeGreeting(state, hello: string){
+      state.greeting = hello;
+    },
   },
   actions: {
   },

@@ -25,11 +25,12 @@
   </nav>
 </template>
 <script lang="ts">
-import { defineComponent, PropType, ref } from 'vue';
+import { defineComponent, PropType } from 'vue';
 import { Link } from '@/interfaces/link';
 import { Btn } from '@/interfaces/btn';
 import { useStore } from 'vuex'
 import CustomButton from '../components/CustomButton.vue';
+import { computed } from '@vue/reactivity';
 
 export default defineComponent({
   name: 'NavBar',
@@ -63,14 +64,14 @@ export default defineComponent({
   },
   setup(){
     const store = useStore()
-    const greeting = ref<string>(store.state.greeting)
+    //const greeting = ref<string>(store.state.greeting)
 
     return {
       store,
-      greeting,
+      greeting: computed(()=> store.getters['hello']),
       changeGreeting: () => {
-        store.commit('changeGreeting')
-      }
+        store.commit('changeGreeting', "🔴Sesión Cerrada")
+      },
     };
   },
 });
