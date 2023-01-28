@@ -15,6 +15,9 @@
         <template v-slot:footer>
           <h3>Id de Usuario: {{ user.id }}</h3>
           <h3>Rol de usuario: {{ user.role }}</h3>
+          <CustomButton @click="addElementToCart(user)">
+            <template v-slot:text>Añadir al 🛒</template>
+          </CustomButton>
         </template>
       </CustomCard>
     </section>
@@ -25,16 +28,19 @@
 </template>
 
 <script lang="ts">
+import { useCart } from '@/composables/useCart'
 import { defineComponent, ref } from 'vue';
 import { AxiosResponse } from 'axios';
 import fakeShopApi from '../api/fakeShopApi';
 import CustomCard from '../components/CustomCard.vue';
+import CustomButton from '../components/CustomButton.vue';
 import { User } from '../models/user';
 
 export default defineComponent({
   name: 'UserComponent',
   components: {
-    CustomCard
+    CustomCard,
+    CustomButton
   },
 
   props: {
@@ -46,18 +52,18 @@ export default defineComponent({
   },
 
   setup(props) {
+    const { addElementToCart } = useCart();
     let user = ref<User>();
-
     fakeShopApi.get<unknown, AxiosResponse<User>>(`/users/${props.id}`)
       .then((res) => {
         user.value = res.data;
         console.log(res.data)
         console.log(user.value.name)
         console.log(user.value.id)
-
       })
     return {
-      user
+      user,
+      addElementToCart
     }
   }
 })
@@ -67,6 +73,7 @@ export default defineComponent({
 .user {
   background-color: #539678;
   text-align: left;
+  width: 100%;
 }
 h2 {
   color: #ffffff;

@@ -4,6 +4,14 @@
             <h2>Mi Carrito 🛒</h2>
         </section>
         <section class="cart-items">
+            <h3>{{ cartItems.length }} productos</h3>
+            <ul>
+                <li v-for="item in cartItems" :key="item.id">
+                    {{ item.name }}
+                </li>
+                <li></li>
+                <li></li>
+            </ul>
         </section>
         <section class="cart-footer">
             <CustomButton>
@@ -22,8 +30,8 @@ import CustomButton from '../components/CustomButton.vue';
 
 export default defineComponent({
     components: {
-    CustomButton
-  },
+        CustomButton
+    },
     setup() {
         const { cartItems } = useCart()
         return {

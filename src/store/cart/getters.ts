@@ -1,5 +1,4 @@
 import { GetterTree } from "vuex";
-import cartModule from ".";
 import { IState } from "..";
 import { ICartState } from "./state";
 
