@@ -11,7 +11,7 @@
       <router-link :to="{name: 'products'}" title="Productos">Productos</router-link> |
       <router-link :to="{name: 'contact'}" title="Contacto">Contacto</router-link>
     </div>
-    {{ greeting }}
+    <span>{{ greeting }}</span>
   </nav>
   <nav class="links" v-if="links">
     <a v-for="link in links"

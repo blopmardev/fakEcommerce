@@ -1,13 +1,16 @@
-import { createStore } from 'vuex'
+import { User } from '@/models/user';
+import { createStore } from 'vuex';
+import cartModule from './cart';
 
-export default createStore({
+export interface IState {
+  authUser: User | null;
+  greeting: string;
+}
+
+export default createStore<IState>({
   // Variables de estado de la App
   state: {
-    authUser: {
-      id: 5,
-      email: "micorreo@dominio.es",
-      name: "Marcos",
-    },
+    authUser: null,
     greeting: "🟢Hola, estás online",
   },
   getters: {
@@ -23,5 +26,6 @@ export default createStore({
   actions: {
   },
   modules: {
+    cart: cartModule
   }
 })
