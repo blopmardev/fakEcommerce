@@ -1,31 +1,40 @@
 <template>
     <article class="cart">
-      <section class="cart-header">
-        <h2>Mi Carrito</h2>
-      </section>
-      <section class="cart-items">
-      </section>
-      <section class="cart-footer">
-        <button>Comprar</button>
-      </section>
+        <section class="cart-header">
+            <h2>Mi Carrito 🛒</h2>
+        </section>
+        <section class="cart-items">
+        </section>
+        <section class="cart-footer">
+            <CustomButton>
+                <template v-slot:text>
+                    Comprar
+                </template>
+            </CustomButton>
+        </section>
     </article>
-  </template>
-  
-  <script lang="ts">
-  import { defineComponent } from "vue";
-  
-  export default defineComponent({
-    setup() {
-  
-      return {
+</template>
 
-      };
+<script lang="ts">
+import { defineComponent } from "vue";
+import { useCart } from '../composables/useCart';
+import CustomButton from '../components/CustomButton.vue';
+
+export default defineComponent({
+    components: {
+    CustomButton
+  },
+    setup() {
+        const { cartItems } = useCart()
+        return {
+            cartItems
+        };
     },
-  });
-  </script>
-  
-  <style scoped>
-  .cart {
+});
+</script>
+
+<style scoped>
+.cart {
     height: 100vh;
     position: fixed;
     top: 0;
@@ -37,21 +46,25 @@
     display: flex;
     flex-flow: column nowrap;
     justify-content: space-between;
-  }
-  .cart-header,
-  .cart-footer {
+}
+
+.cart-header,
+.cart-footer {
     background-color: grey;
     height: 50px;
     width: 100%;
-  }
-  
-  .cart-items ul {
+    padding-top: 0.75rem;
+    color: #ffffff;
+}
+
+.cart-items ul {
     list-style: none;
-  }
-  li {
+}
+
+li {
     width: 100%;
     display: flex;
     flex-flow: row nowrap;
     justify-content: space-between;
-  }
-  </style>
+}
+</style>

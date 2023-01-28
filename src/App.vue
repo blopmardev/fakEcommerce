@@ -7,6 +7,7 @@
   <CustomButton>
   </CustomButton>
   <router-view />
+  <CartProducts></CartProducts>
 </template>
 
 <script lang="ts">
@@ -17,11 +18,13 @@ import { defineComponent,
   onUpdated } from 'vue';
 import NavBar from "./components/NavBar.vue";
 import CustomButton from "./components/CustomButton.vue";
+import CartProducts from "./components/CartProducts.vue";
 export default defineComponent({
   name: 'AppComponent',
   components: {
     NavBar,
     CustomButton,
+    CartProducts,
 
   },
   setup() {
