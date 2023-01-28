@@ -63,7 +63,6 @@ export default defineComponent({
   },
   setup(){
     const store = useStore()
-    store.state
     const greeting = ref<string>(store.state.greeting)
 
     return {
