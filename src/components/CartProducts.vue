@@ -8,9 +8,12 @@
             <ul>
                 <li v-for="item in cartItems" :key="item.id">
                     {{ item.name }}
+                    <CustomButton @click="removeElementFromCart(item)" class="btn-danger">
+                        <template v-slot:text>
+                            x
+                        </template>
+                    </CustomButton>
                 </li>
-                <li></li>
-                <li></li>
             </ul>
         </section>
         <section class="cart-footer">
@@ -33,9 +36,10 @@ export default defineComponent({
         CustomButton
     },
     setup() {
-        const { cartItems } = useCart()
+        const { cartItems, removeElementFromCart } = useCart()
         return {
-            cartItems
+            cartItems, 
+            removeElementFromCart
         };
     },
 });
@@ -67,6 +71,7 @@ export default defineComponent({
 
 .cart-items ul {
     list-style: none;
+    padding: 1.5rem;
 }
 
 li {
@@ -74,5 +79,8 @@ li {
     display: flex;
     flex-flow: row nowrap;
     justify-content: space-between;
+}
+.btn-danger{
+    background-color: rgb(199, 6, 16);
 }
 </style>

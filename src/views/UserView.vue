@@ -14,6 +14,7 @@
         </template>
         <template v-slot:footer>
           <h3>Id de Usuario: {{ user.id }}</h3>
+          <h3>E-mail: {{ user.email }}</h3>
           <h3>Rol de usuario: {{ user.role }}</h3>
           <CustomButton @click="addElementToCart(user)">
             <template v-slot:text>Añadir al 🛒</template>
@@ -72,10 +73,17 @@ export default defineComponent({
 <style scoped>
 .user {
   background-color: #539678;
-  text-align: left;
-  width: 100%;
+  width: 70%;
 }
+
 h2 {
   color: #ffffff;
+}
+
+button {
+  width: 50%;
+  height: 25%;
+  font-size: larger;
+  background-color: #2c3e50;
 }
 </style>

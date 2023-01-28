@@ -7,7 +7,10 @@
   <CustomButton>
   </CustomButton>
   <router-view />
-  <CartProducts></CartProducts>
+  
+  <CartProducts v-show="isCartOpen">
+  </CartProducts>
+
 </template>
 
 <script lang="ts">
@@ -19,6 +22,7 @@ import { defineComponent,
 import NavBar from "./components/NavBar.vue";
 import CustomButton from "./components/CustomButton.vue";
 import CartProducts from "./components/CartProducts.vue";
+import { useCart } from './composables/useCart';
 export default defineComponent({
   name: 'AppComponent',
   components: {
@@ -41,19 +45,20 @@ export default defineComponent({
       console.log(today)
     })
 
-    
-
     onUpdated(()=> {
       console.log("onUpdated: componente actualizado");
     })
 
-
     onUnmounted(()=> {
       console.log("onUnmounted: componente desmontado");
-    })
+    });
+
+    const { isCartOpen } = useCart() 
 
     return {
-      today
+      today,
+      useCart,
+      isCartOpen
     }
   }
 })

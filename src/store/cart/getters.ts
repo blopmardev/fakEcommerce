@@ -5,7 +5,11 @@ import { ICartState } from "./state";
 const getters: GetterTree<ICartState, IState> = {
     getCartItems(state){
         return state.users;
-    }
-}
+    },
+
+    getIsOpen(state){
+        return state.isOpen;
+    },
+};
 
 export default getters;

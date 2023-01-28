@@ -7,28 +7,29 @@
       <h1>{{ title }}</h1>
     </div>
     <div>
-      <router-link :to="{name: 'home'}" title="Home">Home</router-link> |
-      <router-link :to="{name: 'products'}" title="Productos">Productos</router-link> |
-      <router-link :to="{name: 'contact'}" title="Contacto">Contacto</router-link>
+      <router-link :to="{ name: 'home' }" title="Home">Home</router-link> |
+      <router-link :to="{ name: 'products' }" title="Productos">Productos</router-link> |
+      <router-link :to="{ name: 'contact' }" title="Contacto">Contacto</router-link>
     </div>
     <span>{{ greeting }}</span>
   </nav>
   <nav class="links" v-if="links">
-    <a v-for="link in links"
-    :key="link.label"
-    :href="link.url"
-    :title="link.label"
-    target="_blank">{{ link.label }}</a>
-  <CustomButton @click="changeGreeting">
-    <template v-slot:text> x Cerrar sesión</template>
-  </CustomButton>
+
+    <CustomButton @click="toggleCart">
+      <template v-slot:text> Ver Carrito</template>
+    </CustomButton>
+    <a v-for="link in links" :key="link.label" :href="link.url" :title="link.label" target="_blank">{{ link.label }}</a>
+    <CustomButton @click="changeGreeting">
+      <template v-slot:text> x Cerrar sesión</template>
+    </CustomButton>
   </nav>
 </template>
 <script lang="ts">
 import { defineComponent, PropType } from 'vue';
 import { Link } from '@/interfaces/link';
 import { Btn } from '@/interfaces/btn';
-import { useStore } from 'vuex'
+import { useStore } from 'vuex';
+import { useCart } from '@/composables/useCart';
 import CustomButton from '../components/CustomButton.vue';
 import { computed } from '@vue/reactivity';
 
@@ -41,19 +42,19 @@ export default defineComponent({
     },
     links: {
       type: Array as PropType<Link[]>,
-      default(): Link[]{
+      default(): Link[] {
         return [
-          { label: "Google", url:"http://www.google.es" },
-          { label: "Vue", url:"http://www.vuejs.org" }
+          { label: "Google", url: "http://www.google.es" },
+          { label: "Vue", url: "http://www.vuejs.org" }
         ]
       }
     },
     btn: {
       type: Array as PropType<Btn[]>,
-      default(): Btn[]{
+      default(): Btn[] {
         return [
-          { label: "Google", url:"http://www.google.es" },
-          { label: "Vue", url:"http://www.vuejs.org" }
+          { label: "Google", url: "http://www.google.es" },
+          { label: "Vue", url: "http://www.vuejs.org" }
         ]
       }
     }
@@ -62,16 +63,17 @@ export default defineComponent({
     CustomButton,
 
   },
-  setup(){
+  setup() {
     const store = useStore()
     //const greeting = ref<string>(store.state.greeting)
-
+  const { toggleCart } = useCart();
     return {
       store,
-      greeting: computed(()=> store.getters['hello']),
+      greeting: computed(() => store.getters['hello']),
       changeGreeting: () => {
         store.commit('changeGreeting', "🔴Sesión Cerrada")
       },
+      toggleCart,
     };
   },
 });
@@ -107,7 +109,8 @@ nav a.router-link-exact-active {
 .links {
   background-color: #2c3e50;
 }
-.links > a {
+
+.links>a {
   background-color: #2c3e50;
   color: #ffffff;
 }
