@@ -22,6 +22,7 @@
     <ul>
       <router-link :to="{ name: 'home' }" title="Home">Home</router-link> |
       <router-link :to="{ name: 'products' }" title="Productos">Productos</router-link> |
+      <router-link :to="{ name: 'categories' }" title="Categorías">Categorías</router-link> |
       <router-link :to="{ name: 'users' }" title="Usuarios">Usuarios</router-link> |
       <router-link :to="{ name: 'contact' }" title="Contacto">Contacto</router-link>
     </ul>
