@@ -1,5 +1,5 @@
 <template>
-  <article v-if="!isLoading">
+  <article class="section" v-if="!isLoading">
     <h1>Perfil de {{ user.name }}</h1>
     <section>
       <CustomCard class="user" :key="user.id" :user="user.name">
@@ -17,9 +17,6 @@
           <h3>E-mail: {{ user.email }}</h3>
           <h3>Rol de usuario: {{ user.role }}</h3>
           <h3>Se unió a FakEcommerce: {{ user.creationAt }}</h3>
-          <CustomButton @click="addElementToCart(user)">
-            <template v-slot:text>Añadir al 🛒</template>
-          </CustomButton>
         </template>
       </CustomCard>
     </section>
@@ -31,16 +28,13 @@
 
 <script lang="ts">
 import { defineComponent} from 'vue';
-import { useCart } from '@/composables/useCart'
 import useUsers from '@/composables/useUsers';
 import CustomCard from '../components/CustomCard.vue';
-import CustomButton from '../components/CustomButton.vue';
 
 export default defineComponent({
   name: 'UserComponent',
   components: {
     CustomCard,
-    CustomButton
   },
 
   props: {
@@ -52,12 +46,10 @@ export default defineComponent({
   },
 
   setup(props) {
-    const { addElementToCart } = useCart();
     const { user, fetchUserById, isLoading } = useUsers();
     fetchUserById(props.id);
     return {
       user,
-      addElementToCart,
       isLoading
     };
   },
@@ -65,6 +57,13 @@ export default defineComponent({
 </script>
 
 <style scoped>
+
+.section{
+  margin: 0 auto;
+  width: 90%;
+  margin-top: 1rem;
+  padding: 1rem;
+}
 .user {
   background-color: #539678;
   width: 70%;

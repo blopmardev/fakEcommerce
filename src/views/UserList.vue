@@ -56,7 +56,7 @@ export default defineComponent({
 </script>
 
 <style scoped>
-.products {
+.users {
   margin: 0 auto;
   width: 90%;
   margin-top: 1rem;

@@ -1,8 +1,8 @@
 <template>
-  <article v-if="!isLoading">
+  <article class="product" v-if="!isLoading">
     <h1>Perfil de {{ product.title }}</h1>
     <section>
-      <CustomCard class="product" :key="product.id" :product="product.title">
+      <CustomCard class="product-card" :key="product.id" :product="product.title">
         <template v-slot:header>
           <h2>{{ product.title }}</h2>
         </template>
@@ -69,6 +69,20 @@ export default defineComponent({
 
 <style scoped>
 .product {
+  margin-top: 1rem;
+  padding: 1rem;
+}
+.img {
+  width: 100%;
+  margin-top: 1rem;
+  padding: 1rem;
+}
+
+h1 {
+  color: #539678;
+}
+
+.product-card {
   background-color: #539678;
   width: 70%;
 }
