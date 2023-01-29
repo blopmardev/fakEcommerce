@@ -1,6 +1,12 @@
 # FakEcommerce (Vue + TypeScript)
 
-Esta es una práctica del *módulo Vue + TypeScript* del *Bootcamp Bootcamp Mujeres en Tech Glovo & KeepCoding* y simula una plataforma de comercio electrónico.
+Esta es una práctica del **módulo Vue + TypeScript** del *Bootcamp Bootcamp Mujeres en Tech Glovo & KeepCoding* y simula una plataforma de comercio electrónico.
+
+El proyecto realiza consultas a la API de pruebas de Platzi:
+
+- [fakeAPI](https://fakeapi.platzi.com/)
+
+Para las conexiones a esta API se recurre a Axios.
 
 ![Captura de pantalla de la página principal](src/assets/fakecommerce-app-screenshot.png)
 
