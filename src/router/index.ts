@@ -22,6 +22,20 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import(/* webpackChunkName: "contact" */'../views/ContactView.vue')
   },
   {
+    path: '/categorias',
+    name: 'categories',
+    component: () => import(/* webpackChunkName: "categories" */'../views/CategoryListView.vue')
+  },
+  {
+    path: '/categoria/:id',
+    name: 'category',
+    component: () => import(/* webpackChunkName: "category" */'../views/CategoryDetailView.vue'),
+    props: (route) => {
+      const id = Number(route.params.id)
+      return isNaN(id) ? { id: null } : {id};
+    },
+  },
+  {
     path: '/productos/producto/:id',
     name: 'product',
     component: () => import(/* webpackChunkName: "product" */'../views/DetailView.vue'),
@@ -35,11 +49,6 @@ const routes: Array<RouteRecordRaw> = [
     name: 'users',
     beforeEnter: [haveRoleGuard],
     component: () => import(/* webpackChunkName: "users" */'../views/UserList.vue'),
-    props: (route) => {
-      const id = Number(route.params.id);
-      const userRole = localStorage.getItem('userRole');
-      return isNaN(id) ? { id: null, userRole } : { id, userRole };
-    },
   },
   {
     path: '/usuario/:id',

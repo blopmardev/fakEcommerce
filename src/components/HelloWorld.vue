@@ -7,13 +7,13 @@
         <p>En este simulador de E-Commerce podrás consultar los productos disponibles, así que como los usuarios que ya confían en nuestra plataforma.</p>
       </article>
     </section>
-    <ProductListView></ProductListView>
+    <CategoryListView></CategoryListView>
   </main>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import ProductListView from '@/views/ProductListView.vue';
+import CategoryListView from '@/views/CategoryListView.vue';
 
 export default defineComponent({
     name: "HelloWorld",
@@ -21,7 +21,8 @@ export default defineComponent({
         msg: String,
         title: String
     },
-    components: { ProductListView },
+    components: {
+      CategoryListView },
 });
 </script>
 
