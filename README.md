@@ -1,6 +1,8 @@
-# Mi primer proyecto de Vue + TypeScript
+# FakEcommerce (Vue + TypeScript)
 
-![Captura de pantalla de la sección Productos](src/assets/vue-app-screenshot.png)
+Esta es una práctica del *módulo Vue + TypeScript* del *Bootcamp Bootcamp Mujeres en Tech Glovo & KeepCoding* y simula una plataforma de comercio electrónico.
+
+![Captura de pantalla de la página principal](src/assets/fakecommerce-app-screenshot.png)
 
 ## Project setup
 ```
