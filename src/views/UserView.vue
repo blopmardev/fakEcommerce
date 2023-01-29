@@ -30,9 +30,9 @@
 </template>
 
 <script lang="ts">
+import { defineComponent} from 'vue';
 import { useCart } from '@/composables/useCart'
 import useUsers from '@/composables/useUsers';
-import { defineComponent} from 'vue';
 import CustomCard from '../components/CustomCard.vue';
 import CustomButton from '../components/CustomButton.vue';
 

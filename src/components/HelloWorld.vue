@@ -1,51 +1,30 @@
 <template>
   <main class="hello">
-    <h2>{{ msg }}</h2>
-    <h3> {{ title }}</h3>
-    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ab asperiores facilis laboriosam exercitationem, totam fuga recusandae nostrum est quidem voluptates fugiat quia tenetur distinctio obcaecati explicabo cum possimus consectetur hic. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ab asperiores facilis laboriosam exercitationem, totam fuga recusandae nostrum est quidem voluptates fugiat quia tenetur distinctio obcaecati explicabo cum possimus consectetur hic. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ab asperiores facilis laboriosam exercitationem, totam fuga recusandae nostrum est quidem voluptates fugiat quia tenetur distinctio obcaecati explicabo cum possimus consectetur hic.</p>
-    <p>
-      Para personalizar y configurar este proyecto, revisa la <a href="https://cli.vuejs.org" target="_blank" rel="noopener">documentación de vue-cli</a>.
-    </p>
-    <h3>Plugins de CLI Instalados en este proyecto</h3>
-    <ul>
-      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-babel" target="_blank" rel="noopener">babel</a></li>
-      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-router" target="_blank" rel="noopener">router</a></li>
-      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-vuex" target="_blank" rel="noopener">vuex</a></li>
-      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-eslint" target="_blank" rel="noopener">eslint</a></li>
-      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-typescript" target="_blank" rel="noopener">typescript</a></li>
-    </ul>
-    <h3>Enlaces de referencia</h3>
-    <ul>
-      <li><a href="https://vuejs.org" target="_blank" rel="noopener">Core Docs</a></li>
-      <li><a href="https://forum.vuejs.org" target="_blank" rel="noopener">Forum</a></li>
-      <li><a href="https://chat.vuejs.org" target="_blank" rel="noopener">Community Chat</a></li>
-      <li><a href="https://twitter.com/vuejs" target="_blank" rel="noopener">Twitter</a></li>
-      <li><a href="https://news.vuejs.org" target="_blank" rel="noopener">News</a></li>
-    </ul>
-    <h4>Ecosistema</h4>
-    <ul>
-      <li><a href="https://router.vuejs.org" target="_blank" rel="noopener">vue-router</a></li>
-      <li><a href="https://vuex.vuejs.org" target="_blank" rel="noopener">vuex</a></li>
-      <li><a href="https://github.com/vuejs/vue-devtools#vue-devtools" target="_blank" rel="noopener">vue-devtools</a></li>
-      <li><a href="https://vue-loader.vuejs.org" target="_blank" rel="noopener">vue-loader</a></li>
-      <li><a href="https://github.com/vuejs/awesome-vue" target="_blank" rel="noopener">awesome-vue</a></li>
-    </ul>
+    <h2>{{ title }}</h2>
+    <h3> {{ msg }}</h3>
+    <section>
+      <article>
+        <p>En este simulador de E-Commerce podrás consultar los productos disponibles, así que como los usuarios que ya confían en nuestra plataforma.</p>
+      </article>
+    </section>
+    <ProductListView></ProductListView>
   </main>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
+import ProductListView from '@/views/ProductListView.vue';
 
 export default defineComponent({
-  name: 'HelloWorld',
-  props: {
-    msg: String,
-    title: String
-  },
+    name: "HelloWorld",
+    props: {
+        msg: String,
+        title: String
+    },
+    components: { ProductListView },
 });
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 p {
   margin: 20px 0 0;

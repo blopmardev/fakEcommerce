@@ -31,10 +31,21 @@ const routes: Array<RouteRecordRaw> = [
     },
   },
   {
+    path: '/usuarios',
+    name: 'users',
+    beforeEnter: [haveRoleGuard],
+    component: () => import(/* webpackChunkName: "users" */'../views/UserList.vue'),
+    props: (route) => {
+      const id = Number(route.params.id);
+      const userRole = localStorage.getItem('userRole');
+      return isNaN(id) ? { id: null, userRole } : { id, userRole };
+    },
+  },
+  {
     path: '/usuario/:id',
     name: 'user',
     beforeEnter: [haveRoleGuard],
-    component: () => import(/* webpackChunkName: "product" */'../views/UserView.vue'),
+    component: () => import(/* webpackChunkName: "user" */'../views/UserView.vue'),
     props: (route) => {
       const id = Number(route.params.id);
       const userRole = localStorage.getItem('userRole');

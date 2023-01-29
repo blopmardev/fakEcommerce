@@ -1,14 +1,15 @@
-import { User } from "@/models/user";
+//import { User } from "@/models/user";
+import { Product } from "@/models/product";
 import { MutationTree } from "vuex";
 import { ICartState } from "./state";
 
 const mutations: MutationTree<ICartState> = {
-    addElement(state, element: User){
-        state.users.push(element);
+    addElement(state, element: Product){
+        state.products.push(element);
     },
-    removeElement(state, element: User){
-        const temp = state.users.filter((u) => u.id !== element.id);
-        state.users = temp
+    removeElement(state, element: Product){
+        const temp = state.products.filter((p) => p.id !== element.id);
+        state.products = temp
     },
 
     toggleCart(state){

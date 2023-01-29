@@ -1,13 +1,14 @@
-import { User } from '@/models/user';
+//import { User } from '@/models/user';
+import { Product } from '@/models/product';
 
 export interface ICartState {
-    users: User[];
+    products: Product[];
     isOpen: boolean;
 }
 
 function state(): ICartState {
     return {
-        users: [],
+        products: [],
         isOpen: false,
     };
 }

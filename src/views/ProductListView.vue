@@ -3,51 +3,45 @@
     <h1>Productos</h1>
     <p>En esta página encontrarás información sobre los productos de nuestra <b>primera App Vue + TypeScript</b></p>
   </div>
-  <CustomCard>
-    <template v-slot:header>
-      <h3>Card Header</h3>
-    </template>
-    <template v-slot:picture>
-      <img src="../assets/logo.png" alt="Logo de Vue" title="Logo de Vue" class="img">
-    </template>
-    <template v-slot:body>
-      <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>
-      <router-link :to="{ name: 'product', params: { id: 603 } }">Detalles del producto</router-link>
-    </template>
-    <template v-slot:footer>
-      <h4>Footer</h4>
-    </template>
-  </CustomCard>
-
   <div v-if="isLoading">
     Cargando...
   </div>
+
   <div v-else class="list">
-  <CustomCard v-for="user in users" :key="user.id" :user="user">
-    <template v-slot:header>
-      <h2>{{ user.name }}</h2>
-      <h4>{{ user.email }}</h4>
-    </template>
-    <template v-slot:picture>
-      <img :src="user.avatar" class="img" :alt="user.name" :title="user.name">
-    </template>
-    <template v-slot:body>
-      <h3>{{ user.rol}}</h3>
-    </template>
-    <template v-slot:footer>
-      <CustomButton>
-        <template v-slot:text>
-          <router-link :to="{ name: 'user', params: { id: user.id } }">Perfil del usuario</router-link>
-        </template>
-      </CustomButton>
-    </template>
-  </CustomCard>
-</div>
+    <CustomCard v-for="product in products" :key="product.id" :product="product">
+      <template v-slot:header>
+        <h2>{{ product.title }}</h2>
+      </template>
+      <template v-slot:picture>
+        <img :src="product.images[0]" class="img" :alt="product.title" :title="product.title">
+      </template>
+      <template v-slot:body>
+        <div>
+          <h4>{{ product.category.name }}</h4>
+        </div>
+      </template>
+      <template v-slot:footer>
+        <p>{{ product.price }}€</p>
+        <div>
+          <CustomButton>
+            <template v-slot:text>
+              <router-link :to="{ name: 'product', params: { id: product.id } }">Detalles del producto</router-link>
+            </template>
+          </CustomButton>
+          <CustomButton @click="addElementToCart(product)">
+            <template v-slot:text>Añadir al 🛒</template>
+          </CustomButton>
+        </div>
+      </template>
+    </CustomCard>
+  </div>
+
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import useUsers from '@/composables/useUsers';
+import { useCart } from '@/composables/useCart'
+import useProducts from '@/composables/useProducts';
 import CustomCard from '@/components/CustomCard.vue';
 import CustomButton from '@/components/CustomButton.vue';
 
@@ -58,13 +52,16 @@ export default defineComponent({
     CustomButton,
   },
   setup() {
-    const { users, isLoading, fetchUsers } = useUsers();
-    fetchUsers();
-    console.log(users)
+
+    const { products, isLoading, fetchProducts } = useProducts();
+    fetchProducts();
+    const { addElementToCart } = useCart();
+    //fetchProductById(props.id);
 
     return {
-      users,
+      products,
       isLoading,
+      addElementToCart,
     };
   },
 });
@@ -99,12 +96,12 @@ button {
   background-color: #2c3e50;
 }
 
-a{
+a {
   text-decoration: none;
   color: #ffffff
 }
 
-a:visited{
+a:visited {
   color: #ffffff;
 }
 </style>

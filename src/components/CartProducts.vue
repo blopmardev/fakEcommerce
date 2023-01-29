@@ -7,7 +7,7 @@
             <h3>{{ cartItems.length }} productos</h3>
             <ul>
                 <li v-for="item in cartItems" :key="item.id">
-                    {{ item.name }}
+                    {{ item.title }}
                     <CustomButton @click="removeElementFromCart(item)" class="btn-danger">
                         <template v-slot:text>
                             x

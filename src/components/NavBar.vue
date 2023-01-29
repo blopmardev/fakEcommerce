@@ -7,21 +7,25 @@
       <h1>{{ title }}</h1>
     </div>
     <div>
-      <router-link :to="{ name: 'home' }" title="Home">Home</router-link> |
-      <router-link :to="{ name: 'products' }" title="Productos">Productos</router-link> |
-      <router-link :to="{ name: 'contact' }" title="Contacto">Contacto</router-link>
+      {{ today }}
     </div>
     <span>{{ greeting }}</span>
+    <CustomButton class="btn-blue" @click="changeGreeting">
+      <template v-slot:text> x Cerrar sesión</template>
+    </CustomButton>
   </nav>
   <nav class="links" v-if="links">
 
     <CustomButton @click="toggleCart">
       <template v-slot:text> Ver Carrito</template>
     </CustomButton>
-    <a v-for="link in links" :key="link.label" :href="link.url" :title="link.label" target="_blank">{{ link.label }}</a>
-    <CustomButton @click="changeGreeting">
-      <template v-slot:text> x Cerrar sesión</template>
-    </CustomButton>
+    <ul>
+      <router-link :to="{ name: 'home' }" title="Home">Home</router-link> |
+      <router-link :to="{ name: 'products' }" title="Productos">Productos</router-link> |
+      <router-link :to="{ name: 'users' }" title="Usuarios">Usuarios</router-link> |
+      <router-link :to="{ name: 'contact' }" title="Contacto">Contacto</router-link>
+    </ul>
+    
   </nav>
 </template>
 <script lang="ts">
@@ -61,11 +65,11 @@ export default defineComponent({
   },
   components: {
     CustomButton,
-
   },
   setup() {
     const store = useStore()
     //const greeting = ref<string>(store.state.greeting)
+    const today = new Date().toDateString()
   const { toggleCart } = useCart();
     return {
       store,
@@ -74,6 +78,7 @@ export default defineComponent({
         store.commit('changeGreeting', "🔴Sesión Cerrada")
       },
       toggleCart,
+      today
     };
   },
 });
@@ -95,7 +100,8 @@ nav {
 
 nav a {
   font-weight: bold;
-  color: #2c3e50;
+  color: #9ad4ba;
+  text-decoration: none;
 }
 
 nav img {
@@ -104,6 +110,7 @@ nav img {
 
 nav a.router-link-exact-active {
   color: #ffffff;
+
 }
 
 .links {
@@ -114,4 +121,9 @@ nav a.router-link-exact-active {
   background-color: #2c3e50;
   color: #ffffff;
 }
+
+.btn-blue {
+  background-color: #2c3e50;
+}
+
 </style>
