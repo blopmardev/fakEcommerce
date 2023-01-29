@@ -52,6 +52,11 @@ const routes: Array<RouteRecordRaw> = [
       return isNaN(id) ? { id: null, userRole } : { id, userRole };
     },
   },
+  {
+    path: '/:pathMatch',
+    name: 'notFound',
+    component: () => import(/* webpackChunkName: "notFound" */'../views/400NotFound.vue'),
+  },
 ];
 
 const router = createRouter({
