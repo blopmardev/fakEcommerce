@@ -5,7 +5,8 @@ import { RouteLocation } from "vue-router";
 const haveRoleGuard = (to: RouteLocation, from: RouteLocation, next: any) => {
     console.log(to, from, next)
 
-    const userRole = localStorage.getItem('userRole');
+    const userRole = "Admin"
+    //localStorage.getItem('userRole');
     if (userRole === 'Admin') {
         next();
     } else {

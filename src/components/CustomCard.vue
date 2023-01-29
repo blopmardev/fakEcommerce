@@ -1,8 +1,10 @@
 <template>
-    <article>
+    <article class="card">
         <slot name="picture"></slot>
         <slot name="header"></slot>
-        <slot name="body"></slot>
+        <div>
+            <slot name="body"></slot>
+        </div>
         <div class="footer">
             <slot name="footer"></slot>
         </div>
@@ -10,7 +12,7 @@
 </template>
 
 <style scoped>
-article {
+.card {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
@@ -20,12 +22,13 @@ article {
     width: 40%;
     margin: 1rem auto;
     border-radius: 1rem;
-    box-shadow: 0px 5px 10px rgb(0, 0, 0, 0.2) ;
+    box-shadow: 0px 5px 10px rgb(0, 0, 0, 0.2);
     padding: 1rem;
     overflow: hidden;
     background-color: #ffffff;
 }
-.footer{
+
+.footer {
     background-color: #9ad4ba;
     width: 90%;
     height: auto;

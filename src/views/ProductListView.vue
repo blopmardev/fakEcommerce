@@ -18,25 +18,44 @@
       <h4>Footer</h4>
     </template>
   </CustomCard>
+
   <div v-if="isLoading">
     Cargando...
   </div>
-  <div v-else>
-    <div v-for="user in users" :key="user.id">
-      {{ user.name }} | {{ user.role }}
-    </div>
-  </div>
+  <div v-else class="list">
+  <CustomCard v-for="user in users" :key="user.id" :user="user">
+    <template v-slot:header>
+      <h2>{{ user.name }}</h2>
+      <h4>{{ user.email }}</h4>
+    </template>
+    <template v-slot:picture>
+      <img :src="user.avatar" class="img" :alt="user.name" :title="user.name">
+    </template>
+    <template v-slot:body>
+      <h3>{{ user.rol}}</h3>
+    </template>
+    <template v-slot:footer>
+      <CustomButton>
+        <template v-slot:text>
+          <router-link :to="{ name: 'user', params: { id: user.id } }">Perfil del usuario</router-link>
+        </template>
+      </CustomButton>
+    </template>
+  </CustomCard>
+</div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
 import useUsers from '@/composables/useUsers';
-import CustomCard from '../components/CustomCard.vue';
+import CustomCard from '@/components/CustomCard.vue';
+import CustomButton from '@/components/CustomButton.vue';
 
 export default defineComponent({
   name: 'ProductList',
   components: {
-    CustomCard
+    CustomCard,
+    CustomButton,
   },
   setup() {
     const { users, isLoading, fetchUsers } = useUsers();
@@ -51,7 +70,6 @@ export default defineComponent({
 });
 </script>
 
-
 <style scoped>
 .products {
   margin: 0 auto;
@@ -60,12 +78,33 @@ export default defineComponent({
   padding: 1rem;
 }
 
+.list {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.card {
+  width: 30%;
+}
+
 .img {
-  width: 50%;
-  max-width: 200px;
+  width: 100%;
 }
 
 h1 {
   color: #539678;
+}
+
+button {
+  background-color: #2c3e50;
+}
+
+a{
+  text-decoration: none;
+  color: #ffffff
+}
+
+a:visited{
+  color: #ffffff;
 }
 </style>

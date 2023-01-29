@@ -6,9 +6,12 @@ const useUsers = () => {
 
     return {
         users: computed(() => store.getters['users/getUsers']),
-        isLoading: computed(()=> store.getters['users/getIsLoading']),
+        isLoading: computed(() => store.getters['users/getIsLoading']),
+        user: computed(() => store.getters['users/getUser']),
 
-        fetchUsers: () => store.dispatch('users/fetchUsers')
+        fetchUsers: () => store.dispatch("users/fetchUsers"),
+        fetchUserById: (userId: number) =>
+            store.dispatch("users/fetchUserById", userId),
     }
 }
 

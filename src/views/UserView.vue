@@ -1,8 +1,8 @@
 <template>
-  <article v-if="user">
-    <h1>Perfil de usuario</h1>
+  <article v-if="!isLoading">
+    <h1>Perfil de {{ user.name }}</h1>
     <section>
-      <CustomCard class="user">
+      <CustomCard class="user" :key="user.id" :user="user.name">
         <template v-slot:header>
           <h2>{{ user.name }}</h2>
         </template>
@@ -16,6 +16,7 @@
           <h3>Id de Usuario: {{ user.id }}</h3>
           <h3>E-mail: {{ user.email }}</h3>
           <h3>Rol de usuario: {{ user.role }}</h3>
+          <h3>Se unió a FakEcommerce: {{ user.creationAt }}</h3>
           <CustomButton @click="addElementToCart(user)">
             <template v-slot:text>Añadir al 🛒</template>
           </CustomButton>
@@ -30,12 +31,10 @@
 
 <script lang="ts">
 import { useCart } from '@/composables/useCart'
-import { defineComponent, ref } from 'vue';
-import { AxiosResponse } from 'axios';
-import fakeShopApi from '../api/fakeShopApi';
+import useUsers from '@/composables/useUsers';
+import { defineComponent} from 'vue';
 import CustomCard from '../components/CustomCard.vue';
 import CustomButton from '../components/CustomButton.vue';
-import { User } from '../models/user';
 
 export default defineComponent({
   name: 'UserComponent',
@@ -54,20 +53,15 @@ export default defineComponent({
 
   setup(props) {
     const { addElementToCart } = useCart();
-    let user = ref<User>();
-    fakeShopApi.get<unknown, AxiosResponse<User>>(`/users/${props.id}`)
-      .then((res) => {
-        user.value = res.data;
-        console.log(res.data)
-        console.log(user.value.name)
-        console.log(user.value.id)
-      })
+    const { user, fetchUserById, isLoading } = useUsers();
+    fetchUserById(props.id);
     return {
       user,
-      addElementToCart
-    }
-  }
-})
+      addElementToCart,
+      isLoading
+    };
+  },
+});
 </script>
 
 <style scoped>
